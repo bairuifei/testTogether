@@ -1,44 +1,36 @@
 package com.chatapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Button;
 
-import com.chatapp.websocket.ChatWebSocketClient;
+public class MainActivity extends Activity implements View.OnClickListener{
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
-public class MainActivity extends Activity implements View.OnClickListener {
-
-    private TextView content;
-    private EditText msg;
-    private ImageButton send;
+    private Button link_brf,link_tqq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        content = (TextView) findViewById(R.id.content);
-        msg = (EditText) findViewById(R.id.msg);
-        send = (ImageButton) findViewById(R.id.send);
-        send.setOnClickListener(this);
+        link_brf = (Button) findViewById(R.id.link_brf);
+        link_tqq = (Button) findViewById(R.id.link_tqq);
+        link_brf.setOnClickListener(this);
+        link_tqq.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId()==send.getId()){
-            Toast.makeText(this,"send",Toast.LENGTH_SHORT).show();
-            try {
-                URI uri = new URI("ws://localhost:8080/chatWebSocket");
-                ChatWebSocketClient socketClient = new ChatWebSocketClient(uri);
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
+        switch (v.getId()){
+            case R.id.link_brf:
+                Intent intent = new Intent(this,MainActivity_tqq.class);
+                startActivity(intent);
+                break;
+            case R.id.link_tqq:
+                intent = new Intent(this,MainActivity_brf.class);
+                startActivity(intent);
+                break;
         }
     }
 }
