@@ -25,4 +25,10 @@
         android:text="预览服务器图片"
         android:id="@+id/show_pic"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试加密"
+        android:id="@+id/test_secret"/>
+
 </LinearLayout>

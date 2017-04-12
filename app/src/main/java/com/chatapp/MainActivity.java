@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
-    private Button link_brf,link_tqq,show_pic;
+    private Button link_brf,link_tqq,show_pic,test_secret;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +17,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         link_brf = (Button) findViewById(R.id.link_brf);
         link_tqq = (Button) findViewById(R.id.link_tqq);
         show_pic = (Button) findViewById(R.id.show_pic);
+        test_secret = (Button) findViewById(R.id.test_secret);
         link_brf.setOnClickListener(this);
         link_tqq.setOnClickListener(this);
         show_pic.setOnClickListener(this);
+        test_secret.setOnClickListener(this);
     }
 
     @Override
@@ -35,6 +37,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 break;
             case R.id.show_pic:
                 intent = new Intent(this,NetImageActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.test_secret:
+                intent = new Intent(this,SecretActivity.class);
                 startActivity(intent);
                 break;
         }
